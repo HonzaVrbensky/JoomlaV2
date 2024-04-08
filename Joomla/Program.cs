@@ -21,7 +21,8 @@ builder.Services.AddDefaultIdentity<JUser>(options =>
     options.Password.RequireUppercase = false;
     options.Password.RequiredLength = 4; // Won't work
 })
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultTokenProviders();
 
 builder.Services.AddRazorPages();
 
