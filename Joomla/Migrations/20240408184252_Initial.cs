@@ -81,7 +81,7 @@ namespace Joomla.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Title = table.Column<string>(type: "TEXT", nullable: false),
                     Content = table.Column<string>(type: "TEXT", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false, defaultValue: new DateTime(2024, 4, 8, 17, 21, 55, 16, DateTimeKind.Utc).AddTicks(9059)),
+                    CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false, defaultValue: new DateTime(2024, 4, 8, 18, 42, 51, 447, DateTimeKind.Utc).AddTicks(3350)),
                     AuthorId = table.Column<Guid>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
@@ -183,17 +183,17 @@ namespace Joomla.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { new Guid("8f96a016-7e39-4378-8856-a07e80c0db9a"), null, "Admin", "ADMIN" });
+                values: new object[] { new Guid("1635383f-6208-44c7-b656-1fb7f4d3cdba"), null, "Admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "AccessFailedCount", "BirthDate", "ConcurrencyStamp", "Email", "EmailConfirmed", "FullName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { new Guid("a09a8053-2835-40bd-9941-f29935d84f13"), 0, new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "8a448855-7bcf-4249-87bd-20c4e224e8db", "admin@localhost", true, "Administrator", false, null, "ADMIN@LOCALHOST", "ADMIN", "AQAAAAIAAYagAAAAEAhWDOm8lzmRIAafY0UixvmgHi24qHtiz0jo755LUSlJDbM8Uuv0EiKExIjhPclOAQ==", null, false, "", false, "admin" });
+                values: new object[] { new Guid("e064b2ce-b196-451b-ab40-b1637d02e2b4"), 0, new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "f2923115-d9d7-41f1-8966-62275e589115", "admin@localhost", true, "Administrator", false, null, "ADMIN@LOCALHOST", "ADMIN", "AQAAAAIAAYagAAAAEAW2FGBbXyUQMZYVWrQLxi1x5hIgjCylG0xnNInvlpb1KoeZrYB3TQz+iQ/UK12Zog==", null, false, "", false, "admin" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { new Guid("8f96a016-7e39-4378-8856-a07e80c0db9a"), new Guid("a09a8053-2835-40bd-9941-f29935d84f13") });
+                values: new object[] { new Guid("1635383f-6208-44c7-b656-1fb7f4d3cdba"), new Guid("e064b2ce-b196-451b-ab40-b1637d02e2b4") });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Articles_AuthorId",

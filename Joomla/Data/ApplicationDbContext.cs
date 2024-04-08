@@ -37,7 +37,7 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
             Email = "admin@localhost",
             NormalizedEmail = "ADMIN@LOCALHOST",
             EmailConfirmed = true,
-            PasswordHash = hasher.HashPassword(new JUser(), "admin"),
+            PasswordHash = hasher.HashPassword(new JUser(), "Admin123$"),
             SecurityStamp = string.Empty,
             FullName = "Administrator",
             BirthDate = DateTime.Parse("2000-01-01")
