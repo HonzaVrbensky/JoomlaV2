@@ -31,13 +31,19 @@
             @Html.DisplayFor(model => model.Article.CreatedAt)
         </dd>
         <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Article.UpdatedAt)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Article.UpdatedAt)
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Article.Author)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Article.Author.Id)
+            @Html.DisplayFor(model => model.Article.Author.FullName)
         </dd>
     </dl>
-    
+
     <form method="post">
         <input type="hidden" asp-for="Article.Id" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |

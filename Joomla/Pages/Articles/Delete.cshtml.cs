@@ -21,8 +21,7 @@ public class DeleteModel : PageModel
         _context = context;
     }
 
-    [BindProperty]
-    public Article Article { get; set; } = default!;
+    [BindProperty] public Article Article { get; set; } = default!;
 
     public async Task<IActionResult> OnGetAsync(int? id)
     {
@@ -31,16 +30,15 @@ public class DeleteModel : PageModel
             return NotFound();
         }
 
-        var article = await _context.Articles.FirstOrDefaultAsync(m => m.Id == id);
+        var article = await _context.Articles.Include(article => article.Author).FirstOrDefaultAsync(m => m.Id == id);
 
         if (article == null)
         {
             return NotFound();
         }
-        else
-        {
-            Article = article;
-        }
+
+        Article = article;
+
         return Page();
     }
 
