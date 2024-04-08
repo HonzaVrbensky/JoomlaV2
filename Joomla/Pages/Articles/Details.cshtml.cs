@@ -30,15 +30,13 @@ public class DetailsModel : PageModel
             return NotFound();
         }
 
-        var article = await _context.Articles.FirstOrDefaultAsync(m => m.Id == id);
+        var article = await _context.Articles.Include(article => article.Author).FirstOrDefaultAsync(m => m.Id == id);
         if (article == null)
         {
             return NotFound();
         }
-        else
-        {
-            Article = article;
-        }
+
+        Article = article;
         return Page();
     }
 }
