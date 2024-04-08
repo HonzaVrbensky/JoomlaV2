@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Joomla.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240408184252_Initial")]
+    [Migration("20240408194526_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -36,10 +36,13 @@ namespace Joomla.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT")
-                        .HasDefaultValue(new DateTime(2024, 4, 8, 18, 42, 51, 447, DateTimeKind.Utc).AddTicks(3350));
+                        .HasDefaultValue(new DateTime(2024, 4, 8, 19, 45, 25, 692, DateTimeKind.Utc).AddTicks(6803));
 
                     b.Property<string>("Title")
                         .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -123,17 +126,17 @@ namespace Joomla.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("e064b2ce-b196-451b-ab40-b1637d02e2b4"),
+                            Id = new Guid("c31a1af9-56d7-477c-928c-dfb327b79fdb"),
                             AccessFailedCount = 0,
                             BirthDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "f2923115-d9d7-41f1-8966-62275e589115",
+                            ConcurrencyStamp = "a66f52fe-15d3-4d67-ab0a-bc67454085f8",
                             Email = "admin@localhost",
                             EmailConfirmed = true,
                             FullName = "Administrator",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@LOCALHOST",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEAW2FGBbXyUQMZYVWrQLxi1x5hIgjCylG0xnNInvlpb1KoeZrYB3TQz+iQ/UK12Zog==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDJ9bKPjM21kXoiq5xWVL4Fvj7AhKrB1uF876KOxqiaTCbxYR7iLx2heNvY9Sz8AvQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -170,7 +173,7 @@ namespace Joomla.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("1635383f-6208-44c7-b656-1fb7f4d3cdba"),
+                            Id = new Guid("693a000c-9b78-4663-8357-0e51e3616322"),
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -260,8 +263,8 @@ namespace Joomla.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = new Guid("e064b2ce-b196-451b-ab40-b1637d02e2b4"),
-                            RoleId = new Guid("1635383f-6208-44c7-b656-1fb7f4d3cdba")
+                            UserId = new Guid("c31a1af9-56d7-477c-928c-dfb327b79fdb"),
+                            RoleId = new Guid("693a000c-9b78-4663-8357-0e51e3616322")
                         });
                 });
 

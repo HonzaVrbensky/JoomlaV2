@@ -70,6 +70,7 @@ public class CreateModel : PageModel
             Title = Input.Title,
             Content = Input.Content,
             CreatedAt = DateTime.Now,
+            UpdatedAt = DateTime.Now,
             Author = user,
         };
 
