@@ -13,26 +13,16 @@
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Article.Id" />
+            <input type="hidden" asp-for="Input.Id" />
             <div class="form-group">
-                <label asp-for="Article.Title" class="control-label"></label>
-                <input asp-for="Article.Title" class="form-control" />
-                <span asp-validation-for="Article.Title" class="text-danger"></span>
+                <label asp-for="Input.Title" class="control-label"></label>
+                <input asp-for="Input.Title" class="form-control" />
+                <span asp-validation-for="Input.Title" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Article.Content" class="control-label"></label>
-                <input asp-for="Article.Content" class="form-control" />
-                <span asp-validation-for="Article.Content" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Article.CreatedAt" class="control-label"></label>
-                <input asp-for="Article.CreatedAt" class="form-control" />
-                <span asp-validation-for="Article.CreatedAt" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Article.AuthorId" class="control-label"></label>
-                <select asp-for="Article.AuthorId" class="form-control" asp-items="ViewBag.AuthorId"></select>
-                <span asp-validation-for="Article.AuthorId" class="text-danger"></span>
+                <label asp-for="Input.Content" class="control-label"></label>
+                <input asp-for="Input.Content" class="form-control" />
+                <span asp-validation-for="Input.Content" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Joomla.Data;
 using Joomla.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Build.Framework;
 
 namespace Joomla.Pages.Articles;
 
@@ -23,7 +24,22 @@ public class EditModel : PageModel
     }
 
     [BindProperty]
-    public Article Article { get; set; } = default!;
+    public InputModel Input { get; set; }
+
+    [TempData]
+    public string ErrorMessage { get; set; }
+
+    public class InputModel
+    {
+        [Required]
+        public int Id { get; set; }
+
+        [Required]
+        public string Title { get; set; }
+
+        [Required]
+        public string Content { get; set; }
+    }
 
     public async Task<IActionResult> OnGetAsync(int? id)
     {
@@ -37,8 +53,14 @@ public class EditModel : PageModel
         {
             return NotFound();
         }
-        Article = article;
-        ViewData["AuthorId"] = new SelectList(_context.JUsers, "Id", "Id");
+
+        Input = new InputModel
+        {
+            Id = article.Id,
+            Title = article.Title,
+            Content = article.Content
+        };
+
         return Page();
     }
 
@@ -51,7 +73,17 @@ public class EditModel : PageModel
             return Page();
         }
 
-        _context.Attach(Article).State = EntityState.Modified;
+        var article = await _context.Articles.FirstOrDefaultAsync(m => m.Id == Input.Id);
+        if (article == null)
+        {
+            return NotFound();
+        }
+
+        article.Title = Input.Title;
+        article.Content = Input.Content;
+        article.UpdatedAt = DateTime.Now;
+
+        _context.Attach(article).State = EntityState.Modified;
 
         try
         {
@@ -59,14 +91,12 @@ public class EditModel : PageModel
         }
         catch (DbUpdateConcurrencyException)
         {
-            if (!ArticleExists(Article.Id))
+            if (!ArticleExists(article.Id))
             {
                 return NotFound();
             }
-            else
-            {
-                throw;
-            }
+
+            throw;
         }
 
         return RedirectToPage("./Index");
